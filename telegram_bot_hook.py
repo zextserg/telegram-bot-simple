@@ -2,8 +2,6 @@ import telebot
 from telebot import types
 from datetime import datetime
 from fastapi import FastAPI
-# from fastapi_cache import caches
-# from fastapi_cache.backends.memory import InMemoryCacheBackend, CACHE_KEY
 from socket  import error as SocketError
 import errno
 import logging
