@@ -1,0 +1,8 @@
+pytz
+requests
+urllib3
+fastapi
+fastapi-cache
+pyTelegramBotAPI
+uvicorn
+google-api-python-client
