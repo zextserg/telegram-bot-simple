@@ -25,6 +25,20 @@ On some steps of conversation there are additional possibilities for users and s
 if you catch errors with permissions or get troubles on GCP VM yu can try:  
 `sudo python telegram_bot_hook.py` or `sudo env "PATH=$PATH" python telegram_bot_hook.py`  
 
+## Flow of bot working conversation
+There are 15 steps in the flow with pre-defined texts for messages from bot and buttons.  
+From step #1 to step #9 bot just show text and propose to click button to the next step.  
+On step #10 bot will ask to fill your Google Form. When user filled out this form - he should click on special button #10 ("I filled form") and bot will check if it's really so - by checking Telegram username in filled forms. Also bot will send message about that action to ADMIN chat.  
+On step #11 bot will ask to send him photo. When user send it (it should be saved in your Google Drive folder) - user should click on special button #11 ("I send photo"). And bot will check if it's really so - by checking files on Google Drive. Also bot will send message about that action to ADMIN chat.  
+On step #12 bot ask user to wait for updates and now ADMIN should send a special admin-command to the bot as a simple message to bot chat with special format:  
+`send-from-admin-to-user-payment-info {user_id} <sum of money>`  
+For example ADMIN can send to the bot:  
+`send-from-admin-to-user-payment-info {123} <150>`  
+After that bot will ask ADMIN to confirm what he should send to user by click on special button #12.  
+On step #13 bot will send to user personalised message with sum from ADMIN and text about your Wallet. Also bot will send user a picture of your Wallet (you should setup it on CONSTs and put you actual pic file to repository). Also bot will ask user to pay some virtual coins and after that click on special button #13 ("I paid").  
+
+
+
 ## Schema of Bot Conversation
 ![alt text](https://github.com/zextserg/telegram-bot-simple/blob/main/tg-bot-schema.png?raw=true)
 
