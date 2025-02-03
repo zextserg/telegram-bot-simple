@@ -30,21 +30,21 @@ if you catch errors with permissions or get troubles on GCP VM yu can try:
 
 ## Detailed instruction how to run bot (same as in comments inside script)
 1. First of all - in GooglrCloudPlatform (GCP) create ServiceAccount and generate ServiceAccountKey (JSON)
-2. Download this JSON from GCP and here set a path to that file
+2. Download this JSON from GCP and here set a path to that file  
 `SECRET_KEY = os.path.join('./', 'service_acc_token_key.json')`
 
 3. Next you should create 3 things and share access to these things to service_accout email (email is inside service account JSON token): 
 - create folder in your GoogleDrive and Enable DriveAPI in GCP
 - create Google Sheet Table and Enable SheetAPI in GCP
 - create Google Form and Enable FormsAPI in GCP
-After creating all 3 things and sharing access - you can set const variables for each in this code below:
+After creating all 3 things and sharing access - you can set const variables for each in this code below:  
 
-In this directory will be saved all files (photos, audio etc.) that user send to the bot.
-Don't forget to Share Full Access in this GoogleDrive Folder to service_accout email (email is inside service account JSON token).
-`GDRIVE_PARENT_DIR = '123abc'` - put here your actual values
+In this directory will be saved all files (photos, audio etc.) that user send to the bot.  
+Don't forget to Share Full Access in this GoogleDrive Folder to service_accout email (email is inside service account JSON token).  
+`GDRIVE_PARENT_DIR = '123abc'` - put here your actual values  
 
 In this table script will write all logs for all users interactions with bot  
-`SHEET_LOG_ID = '123abc'` # put here your actual values  
+`SHEET_LOG_ID = '123abc'` - put here your actual values  
 `SHEET_LOG_SHEET_NAME = 'bot_auto_log'` - put here your actual values  
 
 On step #10 bot will ask user to fill out this form and later check by Telegram username if user really filled it.  
@@ -56,18 +56,22 @@ Don't forget to Share Full Access in your GoogleForm to service_accout email (em
 
  4. If you create all 3 things, share access to them and set correct values above - next code for making CREDS should works fine.
 If you forget something - here you can see an Error with link to Enabling API on GCP or with message of incorrect access:  
-```SCOPES = ["https://www.googleapis.com/auth/forms.responses.readonly", 
+```
+SCOPES = ["https://www.googleapis.com/auth/forms.responses.readonly", 
           'https://www.googleapis.com/auth/drive',
           'https://www.googleapis.com/auth/spreadsheets']
 DISCOVERY_DOC = "https://forms.googleapis.com/$discovery/rest?version=v1"
-CREDS = Credentials.from_service_account_file(SECRET_KEY, scopes=SCOPES)```  
+CREDS = Credentials.from_service_account_file(SECRET_KEY, scopes=SCOPES)
+```  
 
 5. Next you should create bot in Telegram - ask BotFather for that.  
 After creting - set your actual name and Telegram token for that bot (values from BotFather):  
-```TELEGRAM_BOT = {
-    'name': 'bot-name', # put here your actual values
-    'token': '123:123abc' # put here your actual values
-}```
+```
+TELEGRAM_BOT = {
+    'name': 'bot-name', - put here your actual values
+    'token': '123:123abc' - put here your actual values
+}
+```
 
 6. Next you should find a server where this bot will be up and run.  
 This server should have an External static IP address and should be available from internet on port 443 or 8443.  
